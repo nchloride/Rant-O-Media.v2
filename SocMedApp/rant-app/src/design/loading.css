@@ -1,0 +1,49 @@
+.loader {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.circle {
+  align-self: center;
+  background-color: rgb(255, 115, 0);
+  /* box-shadow: 0 2pt 20pt 20pt orange; */
+  height: 200px;
+  border-radius: 50%;
+  width: 200px;
+  transform-origin: center center;
+  animation: shrink 2s infinite;
+}
+.ball {
+  position: relative;
+  background-color: rgb(255, 136, 0);
+  /* box-shadow: 0 2pt 20pt 20pt orange; */
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  animation: shrink 1s infinite;
+}
+@keyframes shrink {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes shadow-fade {
+  0% {
+    box-shadow: 0 0 20pt 20pt orange;
+  }
+  50% {
+    box-shadow: 0 0 20pt 0pt orange;
+  }
+  100% {
+    box-shadow: 0 0 20pt 20pt orange;
+  }
+} ;

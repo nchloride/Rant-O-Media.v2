@@ -1,0 +1,64 @@
+.logo-front {
+  position: relative;
+  height: 100%;
+  width: 50%;
+}
+.logo-front .lines {
+  width: 50px;
+  height: 50px;
+  background-color: orange;
+  animation: bubbles 3s infinite;
+  border-radius: 50px;
+  font-size: 20px;
+  text-align: center;
+}
+.logo-front .lines:nth-child(1) {
+  animation-delay: 2.5s;
+}
+.logo-front .lines:nth-child(2) {
+  animation-delay: 1s;
+}
+.logo-front .lines:nth-child(3) {
+  animation-delay: 0.7s;
+}
+.logo-front .lines:nth-child(4) {
+  animation-delay: 2s;
+}
+.logo-front .lines:nth-child(5) {
+  animation-delay: 1.42s;
+}
+.logo-front .lines:nth-child(6) {
+  animation-delay: 1.7s;
+}
+.main-logo {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  animation: expand 5s infinite;
+  align-items: center;
+  justify-content: space-around;
+}
+@keyframes bubbles {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-1000%);
+  }
+}
+@keyframes expand {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@media only screen and (max-width: 500px) {
+  .logo-front {
+    display: none;
+  }
+}

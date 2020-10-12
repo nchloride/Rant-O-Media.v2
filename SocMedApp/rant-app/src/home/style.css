@@ -1,0 +1,44 @@
+html {
+  scroll-behavior: smooth;
+}
+.sidenav-button {
+  display: none;
+}
+.home--page {
+  background-color: black;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+@media screen and (max-width: 1024px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+@media screen and (max-width: 500px) {
+  /* HOME SIDENAV */
+  .sidenav-button {
+    display: block;
+    outline: none;
+    border: none;
+    background-color: gray;
+    position: absolute;
+    height: 40px;
+    left: 85%;
+  }
+
+  .lines {
+    width: 20px;
+    height: 5px;
+    margin: 2px;
+    border-radius: 10px;
+    background-color: orange;
+  }
+  .lines:nth-child(1) {
+    width: 10px;
+  }
+  .lines:nth-child(3) {
+    width: 10px;
+    float: right;
+  }
+}
