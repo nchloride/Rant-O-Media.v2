@@ -1,20 +1,29 @@
-import React from 'react'
-import { CommentsLikes } from './CommentsLikes.component';
+import axios from 'axios';
+import React,{useState,useEffect} from 'react'
+import { CommentsLikes } from '../comments.component/CommentsLikes.component';
+import { PostDetails } from './post-details.component';
 
 const Post =(props)=>{
-    const {username,post,feeling,id,fullname,date,likes,local_id} = props.post;
-  return (<div className={'post'} >
-    <div className="user-details">
-        <img src={require(`../profile-component/default.jpg`)}></img>
-        <h2>{fullname}</h2>
-    </div>
-    <h3>{username}</h3>
-    <div className="user-post">
-        <h1>{post}</h1>
-        <p>-------is feeling {feeling}</p>
-    </div>
-    <small>{date}</small>
-    <CommentsLikes likes={likes} local_id={local_id}/>
+    const {username,post,feeling,fullname,date,likes,local_id,icon} = props.post;
+    const  [comments,setComments] = useState([]);
+    const [refresh,setRefresh] = useState(false);
+    useEffect(() => {
+  
+      const getComments = async()=>{
+       
+        await axios.post('/newsfeed/api/get-comments',{local_id})
+        .then(result => {
+          setComments(result.data);
+          setRefresh(false);
+        })
+      }
+
+      getComments();
+    }, [!refresh])
+  return (
+    <div className='post' >
+      <PostDetails username={username} post={post} feeling={feeling} fullname={fullname} date={date} icon={icon}/>
+      <CommentsLikes likes={likes} comments={comments} local_id={local_id} setRefresh={setRefresh}/>
     </div>
   )
 }

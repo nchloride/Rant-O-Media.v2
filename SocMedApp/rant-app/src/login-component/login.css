@@ -100,6 +100,32 @@ input[type="password"]::placeholder {
   align-self: center;
   cursor: pointer;
 }
+.register--modal-form > .radio-buttons > .radio-inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.register--modal-form > .radio-buttons > .radio-inputs > input[type="radio"] {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  background-color: goldenrod;
+  color: transparent;
+  opacity: 0.2;
+  z-index: 2;
+}
+
+.register--modal-form > .radio-buttons {
+  display: flex;
+}
+.register--modal-form > .radio-buttons > div > img {
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+  border-radius: 50%;
+}
 @media only screen and (max-width: 500px) {
   .login--tab {
     height: 100%;

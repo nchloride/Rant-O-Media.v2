@@ -90,43 +90,12 @@ app.get("/logout", (req, res) => {
 app.use('/profile',require('./backend/profile')(db,upload,fs))
 
   //Newsfeed APIS
-app.post('/post',(req,res)=>{
-  const {post,username,feeling,date,fullname}= req.body;
-  db.get('userposts').insert(req.body)
-  res.send({message:'Posted!'})
+const newsfeed = require('./backend/newsfeed');
+app.use('/newsfeed',newsfeed)
+app.get('/searchuser/:username',(req,res)=>{
+  const {username} = req.params;
+  db.get('userinformation').findOne({username:username})
+  .then(result=>res.json(result))
+  .catch(err => res.send({error:err}))
 })
-app.get('/api/userposts',(req,res)=>{
-  db.get('userposts').find({}).then(result=>{
-    res.json(result)
-  });
-})
-app.put('/likepost',(req,res)=>{
-  const {local_id,username,fullname} = req.body;
-  let likeStatus;
-  const checkLikes = (likes)=>{
- 
-    if( likes !==null || likes.length!==0){
-      //insert or delete
-      const hasLiked = likes.filter(user=> user.username===username)
-      if(hasLiked.length!==0){
-        likes = likes.filter(user=> user.username !==username)
-        likeStatus="Unliked"
-      }
-      else{
-        likes = [...likes,{username,fullname}];
-        likeStatus="Liked"
-      }
-    }
-    else{
-      likes = [{username,fullname}];
-      likeStatus="Liked"
-    }
-
-    return likes
-  }
- // db.get('userposts').findOneAndUpdate({local_id:local_id},{$set:{likes:(checkLikes(result))}})
-  db.get('userposts').findOne({local_id:local_id}).then(result=>db.get('userposts').findOneAndUpdate({local_id:local_id},{$set:{likes:(checkLikes(result.likes))}}).then(result2=>{res.send({message:likeStatus})}))
-
-})
-
 app.listen(port, () => console.log(`PORT IS RUNNING ON ${port}`));

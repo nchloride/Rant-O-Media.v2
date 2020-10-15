@@ -22,7 +22,7 @@ export default function Register({
   setResponseMessage,
 }) {
   const [userProfile, setUserProfile] = useState();
-
+  const icons = ['giraffe','penguin','elephant','wolf','panda','cheetah','bear','monkey','lion']
   const { handleSubmit, errors, register, reset } = useForm();
 
   const onRegister = async (data) => {
@@ -37,6 +37,7 @@ export default function Register({
         fullname: data.fullname,
         email: data.email,
         address: data.address,
+        icon:data.icon
       }),
     })
       .then((res) => res.json())
@@ -97,7 +98,13 @@ export default function Register({
             pattern: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
           })}
         ></input>
-
+        <div className="radio-buttons">
+        {icons.map((icon,id)=> (<div className="radio-inputs" key={id}>
+            <img src={require(`../icon/${icon}.png`)}></img>
+           <input type="radio" name="icon" value={icon + '.png'}  ref={register({required:true})} />
+            </div>))}
+        </div>
+     
         {responseMessage}
         {errors?.picture && "Image size limit:20mb"}
         <button type="submit" className="create-account">

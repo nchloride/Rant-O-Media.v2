@@ -1,0 +1,51 @@
+.profile {
+  margin-top: 12vh;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.profile__details {
+  font-size: 15px;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 30vh;
+}
+.profile__details > img {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__details {
+    width: 100%;
+  }
+}
+@media screen and (max-height: 800px) {
+  .profile {
+    margin-top: 13vh;
+  }
+}
+@media screen and (max-height: 568px) {
+  .profile {
+    margin-top: 17vh;
+  }
+  .profile__details {
+    height: 40vh;
+  }
+}
+@media screen and (max-height: 667px) {
+  .profile {
+    margin-top: 15vh;
+  }
+  .profile__details {
+    height: 40vh;
+  }
+}

@@ -5,15 +5,16 @@ import { v1 as uuidv1 } from 'uuid';
 export const NewsFeedPosting = ({setPosts}) => {
     const {handleSubmit,register,reset} = useForm();
     const feelings = ['Sad','Happy','Excited','Demonyo','Dumb']
-    const {fullname,username} = JSON.parse(localStorage.getItem('userInformation'))
+    const {fullname,username,icon} = JSON.parse(localStorage.getItem('userInformation'))
 
     const handlePost =  async (data)=>{
         data.username=username;
         data.fullname=fullname;
         data.local_id = uuidv1();
         data.likes=[];
+        data.icon = icon;
         data.date=Date();
-        await axios.post('/post',data).then(res=>console.log(res))
+        await axios.post('/newsfeed/post',data).then(res=>console.log(res))
         setPosts(prevPosts=>[...prevPosts,data])
         reset()
     }

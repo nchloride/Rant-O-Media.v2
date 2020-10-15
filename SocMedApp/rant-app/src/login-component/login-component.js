@@ -25,7 +25,7 @@ function LoginComponent(props) {
       .then(async (resp) => {
         if (resp.authenticated) {
           setLoggedIn(true);
-          localStorage.setItem("userInformation", JSON.stringify({username:resp.data.username,fullname:resp.data.fullname}));
+          localStorage.setItem("userInformation", JSON.stringify({username:resp.data.username,fullname:resp.data.fullname,icon:resp.data.icon}));
         } else {
           return;
         }

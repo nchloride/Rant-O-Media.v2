@@ -5,7 +5,8 @@ import { IsAuthenticated } from "../AuthContext/UserAuthorization";
 import "./style.css";
 import LoadingAnimation from "../design/loading.animation.component";
 import HomeNavigation from "../side-navigation/home-navigation.component";
-import { Profile } from "../profile-component/profile.component";
+// import { Profile } from "../profile-component/profile.component";
+import Profile from "../newProfile/profile.component"
 import NewsFeed from "../newsfeed-component/newsfeed.component";
 function HomeComponent(props) {
   const [loggedIn, setLoggedIn] = useContext(IsAuthenticated);

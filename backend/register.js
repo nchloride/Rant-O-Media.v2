@@ -3,7 +3,8 @@ const router = express.Router();
 const bcryptjs = require("bcryptjs");
 const db = require("./database");
 router.post("/", async (req, res) => {
-  const { username, fullname, address, email } = req.body;
+  console.log(req.body);
+  const { username, fullname, address, email,icon } = req.body;
   const password = await bcryptjs.hash(req.body.password, 10);
   db.get("userinformation")
     .findOne({ username: req.body.username, email: req.body.email })
@@ -16,6 +17,7 @@ router.post("/", async (req, res) => {
           address,
           email,
           password,
+          icon
         });
         res.json({ message: "YOU'VE CREATED AN ACCOUNT CUNT!" });
       } else {

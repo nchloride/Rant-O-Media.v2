@@ -28,16 +28,7 @@ module.exports = (db,upload,fs)=>{
           }
         });
       });
-      router.delete('/deletepicture',(req,res)=>{
-          console.log('delete route: ',req.body)
-          const filePath = `../SocMedApp/rant-app/src/pictures-uploads/${req.body.pictureName}`
-        //   try {
-        //     fs.unlinkSync(filePath);
-        //     res.send({message:`photo:${req.body.pictureName} deleted`})
-        //   } catch (error) {
-        //       console.log(error);
-        //   }
-      })
+
       return router
     
 }

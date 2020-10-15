@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap");
+* {
+  margin: 0%;
+}
 .newsfeed--page {
   /* height: 80vh; */
   margin-top: 12vh;
@@ -51,9 +54,9 @@
   margin-top: 1%;
   margin-left: auto;
   margin-right: auto;
-
   height: 100%;
   width: 51%;
+  overflow: hidden;
 }
 .newsfeed-wall > .post {
   background-color: gray;
@@ -65,6 +68,7 @@
   padding: 10px;
   border-radius: 5px;
 }
+
 .newsfeed-wall > .post > h3 {
   font-size: 15px;
   color: rgb(29, 29, 29);
@@ -79,13 +83,20 @@
 }
 .newsfeed-wall > .post > .user-details {
   display: flex;
+  align-items: center;
   width: 100%;
+}
+.newsfeed-wall > .post > .user-post {
+  word-wrap: break-word;
+  word-break: break-all;
 }
 .newsfeed-wall > .post > .user-details > img {
   height: 30px;
   width: 30px;
   border-radius: 50%;
   cursor: pointer;
+}
+.newsfeed-wall > .post > .user-post {
 }
 /* @keyframes mount {
   from {
@@ -107,7 +118,6 @@
 @media screen and (max-width: 1024px) {
   .newsfeed--page {
     overflow: hidden;
-    margin-top: 12vh;
   }
   .newsfeed--post-form {
     margin: unset;
@@ -158,5 +168,10 @@
     animation: mount 1s ease-in;
     padding: 10px;
     border-radius: 5px;
+  }
+}
+@media screen and (max-height: 800px) {
+  .newsfeed--page {
+    margin-top: 18vh;
   }
 }
