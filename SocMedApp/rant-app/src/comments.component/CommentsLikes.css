@@ -41,6 +41,7 @@
   display: flex;
   margin-bottom: 5px;
   position: relative;
+  word-break: break-all;
 }
 .comment > .comment-information {
   background-color: rgb(70, 70, 70);
@@ -52,7 +53,7 @@
 
 }
   /* Edit/Delete button */
-.options-button{
+/* .options-button{
   background-color: rgb(95, 95, 95);
   outline: none;
   border:none;
@@ -73,9 +74,9 @@
   height: 5px;
   border-radius: 50%;
   margin: 1px;
-}
+} */
   /* =======Options Container======= */
-.options-container{
+/* .options-container{
   position: absolute;
   background-color: rgb(63, 63, 63);
   display: flex;
@@ -97,6 +98,11 @@
 }
 .options-container button:hover{
   background-color: rgb(36, 35, 35);
+} */
+.comment >.options-container{
+  left: 20%;
+  z-index: 3;
+
 }
   /* ======================= */
 .comment-information-name {

@@ -8,21 +8,18 @@ const Post =(props)=>{
     const  [comments,setComments] = useState([]);
     const [refresh,setRefresh] = useState(false);
     useEffect(() => {
-  
       const getComments = async()=>{
-       
         await axios.post('/newsfeed/api/get-comments',{local_id})
         .then(result => {
           setComments(result.data);
           setRefresh(false);
         })
       }
-
       getComments();
     }, [!refresh])
   return (
     <div className='post' >
-      <PostDetails username={username} post={post} feeling={feeling} fullname={fullname} date={date} icon={icon}/>
+      <PostDetails username={username} post={post} feeling={feeling} fullname={fullname} date={date} icon={icon} local_id={local_id}/>
       <CommentsLikes likes={likes} comments={comments} local_id={local_id} setRefresh={setRefresh}/>
     </div>
   )

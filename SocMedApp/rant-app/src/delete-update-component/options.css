@@ -1,0 +1,54 @@
+
+.options-button{
+    background-color: rgb(95, 95, 95);
+    outline: none;
+    border:none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    cursor: pointer;
+   opacity: 0;
+   height: 30px;
+  }
+  .options-button:hover{
+    opacity: 1;
+  }
+  .dot{
+    background-color: rgb(41, 41, 41);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    margin: 1px;
+  }
+
+  .options-container{
+    animation: .1s scale linear;
+    position: absolute;
+    background-color: rgb(63, 63, 63);
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    border-radius: 5%;
+    top: 100%;
+ 
+  }
+  @keyframes scale { 
+      from{
+          transform: scale(.9);
+      }
+      to{
+          transform: scale(1);
+      }
+  }
+  .options-container button{
+    text-align: left;
+    background-color: transparent;
+    color: whitesmoke;
+    border: none;
+    height: 100%;
+    font-size: 15px;
+  }
+  .options-container button:hover{
+    background-color: rgb(36, 35, 35);
+  }

@@ -6,7 +6,21 @@ router.post('/post',(req,res)=>{
     db.get('userposts').insert(req.body)
     res.send({message:'Posted!'})
   })
+  //POST
+  router.delete('/delete-post/:postID',(req,res)=>{
+    //Destructure request parameters
+    const {postID} =req.params;
+    //Call userposts collections then delete post
+    //Call usercomments collection then delete all comments in that post
+    //Send message "Post Deleted!"
+    db.get('userposts').findOneAndDelete({local_id:postID})
+    .then(result=>{
+      db.get('usercomments').remove({postID})
+      .then(result2=>res.send({message:"POST DELETED!"}))
+    })
+  
 
+  })
 router.get('/api/userposts',(req,res)=>{
     db.get('userposts').find({}).then(result=>{
       res.json(result)

@@ -8,13 +8,17 @@ const cors = require("cors");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 const db = require("./backend/database");
 const fs = require("fs");
 const register = require("./backend/register");
 const multer = require("multer");
 const path = require("path");
 const { Console } = require("console");
+
+if(process.env.NODE_ENV === 'production'){
+  app.use(express.static('SocMedApp/rant-app/build'));
+}
 //==================File Upload Setup=================//
 const dir = "./SocMedApp/rant-app/src/pictures-uploads";
 const storage = multer.diskStorage({

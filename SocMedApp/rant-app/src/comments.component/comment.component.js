@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useState,useEffect } from 'react'
 import { Link } from "react-router-dom";
+import { OptionButton } from '../delete-update-component/option-button.component';
+import { OptionsContainer } from '../delete-update-component/options-container.component';
 import { CommentForm } from './comment-form.component';
 
 export const Comment = (props) => {
@@ -48,19 +50,13 @@ export const Comment = (props) => {
                 <Link to={{pathname:`/home/profile/${username}`}} className="comment-information-name">{fullname}</Link>
                 <p>{comment}</p>
         </div>
-        {loggedInUser === username? 
-            <button onClick={()=>setOptionsOpen(prevData=>!prevData)} className="options-button">
-                <div className="dot">
-                </div>
-                <div className="dot">
-                </div>
-                <div className="dot">
-                </div>
-            </button>:''}
-        {optionsOpen && <div className="options-container">
-            <button onClick={()=>setEditEnabled(true)} >edit</button>
-            <button onClick={handleDeleteComment}>delete</button>
-        </div>}
+        {loggedInUser === username &&
+            <OptionButton setOptionsOpen={setOptionsOpen}/>}
+        {optionsOpen && 
+            <OptionsContainer 
+             setEditEnabled = {setEditEnabled}
+             handleDelete={handleDeleteComment}
+        />}
     </div>
     )
 }
