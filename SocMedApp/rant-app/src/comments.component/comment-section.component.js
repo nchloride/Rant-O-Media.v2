@@ -16,8 +16,8 @@ export const CommentSection = ({local_id,username,fullname,comments,setRefresh})
         console.log(data);
         reset();
         setRefresh(prevData=>!prevData);
-        await axios.post('/newsfeed/insert-comment',data)
-        .then(res=>console.log(res));
+        await axios.post('/newsfeed/api/comments',data)
+            .then(res=>console.log(res));
     }
  
     return (

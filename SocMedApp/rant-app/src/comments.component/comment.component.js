@@ -14,22 +14,23 @@ export const Comment = (props) => {
 
     const handleDeleteComment =async ()=>{
         console.log(_id);
-       await axios.delete(`/newsfeed/delete-comment/${_id}`)
-       .then(result=>{
-           props.setRefresh(true);
-           setOptionsOpen(false);
-           console.log(result);
-       })
+        // await axios.delete(`/newsfeed/delete-comment/${_id}`)
+        await axios.delete(`/newsfeed/api/comments/${_id}`)
+            .then(result=>{
+                props.setRefresh(true);
+                setOptionsOpen(false);
+                console.log(result);
+            })
     }
     const handleEditComment = async(data)=>{
         data._id = _id
-        await axios.put('/newsfeed/edit-comment',data)
-        .then(result =>{
-            props.setRefresh(true);
-            setEditEnabled(false);
-        })
+        // await axios.put('/newsfeed/edit-comment',data)
+        await axios.put('/newsfeed/api/comments',data)
+            .then(result =>{
+                props.setRefresh(true);
+                setEditEnabled(false);
+            })
     }
-
     useEffect(() => {
         const escapeKey = (e)=>{
            e.key ==="Escape" && setEditEnabled(false); setOptionsOpen(false)
@@ -40,7 +41,7 @@ export const Comment = (props) => {
     }, [])
     return editEnabled?
     <div className="comment-edit">
-        <CommentForm handleCommentSubmit={handleEditComment} icon={icon} />
+        <CommentForm handleCommentSubmit={handleEditComment} icon={icon} value={comment} />
         <div>press <a href="#" onClick={()=>setEditEnabled(false)}>ESC</a> to remove this</div>
     </div>
      : (

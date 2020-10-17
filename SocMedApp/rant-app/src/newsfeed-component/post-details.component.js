@@ -4,6 +4,7 @@ import { OptionsContainer } from '../delete-update-component/options-container.c
 import Modal from "react-modal"
 import axios from 'axios'
 import {RefreshPost} from "../post-refresh-context/post-refresh";
+import { PostEditForm } from './post-edit-form.component'
 const modalEditStyle = {
     content:{
         top: "50%",
@@ -36,16 +37,25 @@ export const PostDetails = ({icon,fullname,username,post,date,feeling,local_id})
     useEffect(() => {
         console.log(local_id);
     }, [])
+    const stateReset = prevData => !prevData
     const handlePostDelete = async()=>{
-
         await axios.delete(`/newsfeed/delete-post/${local_id}`)
         .then(result=>{
             console.log(result.data);
-            setModalDeleteOpen(prevData=>!prevData) 
-            setOptionsOpen(prevData=>!prevData)
-            setRefreshPost(prevData=>!prevData)
+            setModalDeleteOpen(stateReset) 
+            setOptionsOpen(stateReset)
+            setRefreshPost(stateReset)
         })
-     
+    }
+    const handlePostEdit = async(data)=>{
+        data.local_id=local_id;
+        await axios.put('/newsfeed/api/posts',{data}).
+            then(res=>{
+                console.log(res.data);
+                setModalEditOpen(stateReset);
+                setOptionsOpen(stateReset);
+                setRefreshPost(stateReset);
+            })
     }
 
     return (
@@ -56,11 +66,14 @@ export const PostDetails = ({icon,fullname,username,post,date,feeling,local_id})
             <h2>{fullname}</h2>
         </div>
         <div className="user-options">
-        { loggedInUser ===username && 
-        <OptionButton setOptionsOpen={setOptionsOpen}/>
-        }
+            { loggedInUser ===username && 
+                <OptionButton setOptionsOpen={setOptionsOpen}/>
+            }
 
-        {optionsOpen && <OptionsContainer setEditEnabled={setModalEditOpen} handleDelete={()=>setModalDeleteOpen(prevData=>!prevData)}/>}
+            {optionsOpen && <OptionsContainer 
+                setEditEnabled={setModalEditOpen} 
+                handleDelete={()=>setModalDeleteOpen(prevData=>!prevData)}/>
+            }
         </div>
         </div>
         <h3>{username}</h3>
@@ -71,6 +84,7 @@ export const PostDetails = ({icon,fullname,username,post,date,feeling,local_id})
         <small>{date}</small>
         <Modal isOpen={modalEditOpen} style={modalEditStyle}>
             <button onClick={()=>{setModalEditOpen(prevData=>!prevData); setOptionsOpen(prevData=>!prevData)}}>X</button>
+            <PostEditForm handleEdit={handlePostEdit} icon={icon} post={post}/>
         </Modal>
 
         <Modal isOpen={modalDeleteOpen} style={modalDeleteStyle} >

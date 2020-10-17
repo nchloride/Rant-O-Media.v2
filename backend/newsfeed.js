@@ -7,7 +7,7 @@ router.post('/post',(req,res)=>{
     res.send({message:'Posted!'})
   })
   //POST
-  router.delete('/delete-post/:postID',(req,res)=>{
+router.delete('/delete-post/:postID',(req,res)=>{
     //Destructure request parameters
     const {postID} =req.params;
     //Call userposts collections then delete post
@@ -21,6 +21,11 @@ router.post('/post',(req,res)=>{
   
 
   })
+router.put('/api/posts',(req,res)=>{
+  const {local_id,post} = req.body.data;
+  db.get('userposts').findOneAndUpdate({local_id},{$set:{post}}).
+  then(result=>res.send({ message:"post updated" }));
+})
 router.get('/api/userposts',(req,res)=>{
     db.get('userposts').find({}).then(result=>{
       res.json(result)
@@ -30,6 +35,7 @@ router.post('/api/get-userposts',(req,res)=>{
     const {username} = req.body;
     db.get('userposts').find({username}).then(result => res.json(result));
 })
+//@Desc Like post
 router.put('/likepost',(req,res)=>{
     const {local_id,username,fullname} = req.body;
     let likeStatus;
@@ -56,25 +62,27 @@ router.put('/likepost',(req,res)=>{
     .then(result2=>{res.send({message:likeStatus})}))
   
   })
-  //  Comment
-  router.post("/insert-comment",(req,res)=>{
-    const {comment,username,fullname,icon,local_id} = req.body;
-    db.get('usercomments').insert(req.body)
-    .then(result=>res.send({message:'comment inserted!'}))
-  })
-  router.post('/api/get-comments',(req,res)=>{
-    const {local_id} = req.body
-    db.get('usercomments').find({postID:local_id})
-    .then(result=>res.json(result));
-  })
-  router.delete('/delete-comment/:_id',(req,res)=>{
-    const _id = req.params._id;
-    db.get('usercomments').findOneAndDelete({_id})
-    .then(result=>res.send(result))
-  })
-  router.put('/edit-comment',(req,res)=>{
-    const {_id,comment} = req.body;
-    db.get('usercomments').findOneAndUpdate({_id},{$set:{comment}})
-    .then(result => res.send({message:'comment updated!'}))
-  })
+  
+    //  Comment
+    router.post("/api/comments",(req,res)=>{
+      const {comment,username,fullname,icon,local_id} = req.body;
+      db.get('usercomments').insert(req.body)
+      .then(result=>res.send({message:'comment inserted!'}))
+    })
+    router.get('/api/comments/:id',(req,res)=>{
+   
+      const {id} = req.params
+      db.get('usercomments').find({postID:id})
+        .then(result=>res.json(result));
+    })
+    router.delete('/api/comments/:_id',(req,res)=>{
+      const _id = req.params._id;
+      db.get('usercomments').findOneAndDelete({_id})
+      .then(result=>res.send(result))
+    })
+    router.put('/api/comments',(req,res)=>{
+      const {_id,comment} = req.body;
+      db.get('usercomments').findOneAndUpdate({_id},{$set:{comment}})
+      .then(result => res.send({message:'comment updated!'}))
+    })
   module.exports = router
