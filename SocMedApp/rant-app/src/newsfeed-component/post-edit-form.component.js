@@ -7,7 +7,7 @@ export const PostEditForm = ({post,handleEdit,icon}) => {
     const [newPost,setNewPost] = useState(post);
     return (
         <form className='post-edit-form' onSubmit={handleSubmit(handleEdit)}>
-            <section className="user-details">
+            <section className="user-edit-details">
                 <img src={require(`../icon/${icon}`)}></img>
                 <h1>{fullname}</h1>
             </section>

@@ -1,0 +1,24 @@
+.socials-main{
+    width: 50%;
+    height: 80vh;
+    background-color: rgb(70,70,70);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15vh;
+    display: flex;
+    flex-direction: column;
+}
+.socials-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.socials-nav>.nav-links{
+    width: 100%;
+    font-size: 25px;
+}
+.socials-nav>.nav-links>h1{
+    text-align: center;
+    width: 100%;
+}

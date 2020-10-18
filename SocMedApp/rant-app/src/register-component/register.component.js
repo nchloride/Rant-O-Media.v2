@@ -10,8 +10,8 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    height: "400px",
-    width: "500px",
+    height: "60%",
+    width: "50%",
   },
 };
 Modal.setAppElement("body");

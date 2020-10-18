@@ -30,9 +30,9 @@ function HomeNavigation(props) {
           
         />
         <NavigationButton
-          path="/home/friends"
+          path="/home/searchUser"
           logo={SupervisedUserCircleIcon}
-          title="Friends"
+          title="Find people"
         />
         <NavigationButton
           path="/home/newsfeed"

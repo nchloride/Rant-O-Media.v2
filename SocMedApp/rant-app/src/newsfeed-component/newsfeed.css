@@ -132,6 +132,12 @@
   word-wrap: break-word;
   word-break: break-all;
 }
+.details-options-container> .user-details>.link{
+  text-decoration: none;
+  color: black;
+  font-weight: bolder;
+  font-size: 20px;
+}
 .post>.details-options-container>  .user-details > img {
   height: 30px;
   width: 30px;
@@ -139,14 +145,51 @@
   cursor: pointer;
 }
 
-/* @keyframes mount {
-  from {
-    transform: scale(0.9);
+      /* edit-form */
+.ReactModal__Overlay {
+        opacity: 0;
+        transition: opacity .2s ease-in-out;
+        max-width: 100%;
+    }
+    
+.ReactModal__Overlay--after-open{
+        opacity: 1;
+    }
+    
+.ReactModal__Overlay--before-close{
+        opacity: 0;
+    }
+  .post-edit-form{
+    display: flex;
+    height: 90%;
+    flex-direction: column;
+    overflow: hidden;
   }
-  to {
-    transform: scale(1);
+  .user-edit-details{
+    display: flex;
+    align-items: center;
+    color: whitesmoke;
   }
-} */
+  .user-edit-details>img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+  }
+  .post-edit-form> textarea{
+    resize: none;
+    height: 60%;
+    color: white;
+    background-color: rgb(70, 70, 70);
+    font-size: 15px;
+  }
+  .post-edit-form>input[type=submit]{
+   height: 10%;
+   background-color: orange;
+   outline: none;
+   border: none;
+   font-family: "Fjalla One", sans-serif;
+   font-size: 20px;
+  }
 @keyframes mount {
   from {
     transform: translateX(100%);

@@ -24,7 +24,7 @@ export const NewsFeedPosting = ({setPosts}) => {
         <form className ="newsfeed-post-form" onSubmit={handleSubmit(handlePost)}>
             <div className="newsfeed-post-form-input-container">
                 <img src={require(`../icon/${icon}`)}/>
-                <textarea name="post" ref={register({required:true})}  placeholder={`What's on your mind, ${fullname}`} ></textarea>
+                <textarea name="post" autoComplete="no" ref={register({required:true})}  placeholder={`What's on your mind, ${fullname}`} ></textarea>
             </div>
             <div className="newsfeed-post-form-button-container">
                 <select name="feeling" ref={register({required:true})}>

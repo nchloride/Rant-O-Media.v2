@@ -8,6 +8,8 @@ import HomeNavigation from "../side-navigation/home-navigation.component";
 import {PostRefresh} from "../post-refresh-context/post-refresh"
 import Profile from "../newProfile/profile.component"
 import NewsFeed from "../newsfeed-component/newsfeed.component";
+import { Socials } from "../following-followers.component";
+import FindUser from "../FindUser.component";
 function HomeComponent(props) {
   const [loggedIn, setLoggedIn] = useContext(IsAuthenticated);
   const [loading, setLoading] = useState();
@@ -43,6 +45,7 @@ function HomeComponent(props) {
         <HomeNavigation />
         <Switch>
           <Route path="/home/profile/:username" children={<Profile />}></Route>
+          <Route path="/home/searchUser" children={<FindUser />}></Route>
           <Route path="/home/newsfeed" children={<NewsFeed/>}></Route>
         </Switch>
       </PostRefresh>

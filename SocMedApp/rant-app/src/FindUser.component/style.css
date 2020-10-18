@@ -1,0 +1,51 @@
+.find-user{
+    margin-top: 15vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 80vh;
+    background-color:  rgb(70, 70, 70);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.find-user__search_bar{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+.find-user__search_bar>input{
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    height: 40px;
+}
+.find-user__search_container{
+    height: 800px;
+    width: 100%;
+    background-color: rgb(59, 59, 59);
+}
+
+.searched_user{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.searched_user>.user__link{
+    text-decoration: none;
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+}
+.user__link>img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+@media screen and (max-width:425px){
+    .find-user{
+        width: 100%;
+    }
+}
