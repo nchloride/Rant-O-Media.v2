@@ -48,7 +48,7 @@ export const Comment = (props) => {
     <div className="comment">
         <img src={require(`../icon/${icon}`)}></img>
         <div className="comment-information"> 
-                <Link to={{pathname:`/home/profile/${username}`}} className="comment-information-name">{fullname}</Link>
+                <Link to={{pathname:`/home/${username}`}} className="comment-information-name">{fullname}</Link>
                 <p>{comment}</p>
         </div>
         {loggedInUser === username &&

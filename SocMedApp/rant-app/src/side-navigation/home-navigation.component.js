@@ -24,7 +24,7 @@ function HomeNavigation(props) {
     <nav className="home--nav">
       <div className="home-nav-links">
         <NavigationButton
-          path={`/home/profile/${userInformation?.username}`}
+          path={`/home/${userInformation?.username}`}
           logo={AccountCircleIcon}
           title="Profile"
           
@@ -35,10 +35,10 @@ function HomeNavigation(props) {
           title="Find people"
         />
         <NavigationButton
-          path="/home/newsfeed"
+          path="/home"
           logo={HomeIcon}
           title="NewsFeed"
-          
+          exact
         />
       </div>
       <ul className="home-nav-list">

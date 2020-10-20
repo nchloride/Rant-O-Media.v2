@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-function NavigationButton({ path, logo: Logo, title }) {
+function NavigationButton({ path, logo: Logo, title,...rest }) {
   return (
     <ul className="home-nav-list">
       <li>
@@ -9,7 +9,7 @@ function NavigationButton({ path, logo: Logo, title }) {
           to={{ pathname: path }}
           activeClassName="nav-active"
           className="nav-links"
-       
+          {...rest}
         >
           <Logo /> <div className="nav-links-title">{title}</div>
         </NavLink>

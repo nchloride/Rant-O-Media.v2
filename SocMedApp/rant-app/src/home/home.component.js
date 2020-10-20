@@ -18,7 +18,7 @@ function HomeComponent(props) {
     props.history.push("/");
     localStorage.removeItem("userInformation");
   };
-
+  
   useEffect(() => {
     console.log("Logged in to the app");
     let isMounted = true;
@@ -44,9 +44,10 @@ function HomeComponent(props) {
       <PostRefresh>
         <HomeNavigation />
         <Switch>
-          <Route path="/home/profile/:username" children={<Profile />}></Route>
-          <Route path="/home/searchUser" children={<FindUser />}></Route>
-          <Route path="/home/newsfeed" children={<NewsFeed/>}></Route>
+          <Route path="/home/searchUser"  children={<FindUser />} ></Route>
+          <Route path="/home/:username"  children={<Profile />}></Route>
+          <Route path="/home"  render={()=> JSON.parse(localStorage.getItem('userInformation')) ?  <NewsFeed/>:<LoadingAnimation/>
+          }></Route>
         </Switch>
       </PostRefresh>
     </div>

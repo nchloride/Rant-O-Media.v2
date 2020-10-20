@@ -15,8 +15,7 @@ import NewsFeedPosting from '../newsfeed-component/newsfeed-posting.component';
         const getUser = async()=>{
         isMounted && await axios.get(`/searchuser/${username}`)
                 .then(async (res)=>{
-                    console.log(res.data);
-                    res.data?setUserData(res.data):props.history.push('/home/profile/not-found');
+                    res.data ? setUserData(res.data):props.history.push('/home/profile/not-found');
                     await axios.post('/newsfeed/api/get-userposts',{username})
                      .then(res2 => setUserPosts(res2.data));
                  }

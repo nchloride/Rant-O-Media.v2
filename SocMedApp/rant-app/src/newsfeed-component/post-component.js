@@ -8,15 +8,18 @@ const Post =(props)=>{
     const  [comments,setComments] = useState([]);
     const [refresh,setRefresh] = useState(false);
     useEffect(() => {
+      let isMounted = true
       const getComments = async()=>{
         // await axios.post('/newsfeed/api/get-comments',{local_id})
         await axios.get(`/newsfeed/api/comments/${local_id}`)
         .then(result => {
-          setComments(result.data);
-          setRefresh(false);
+          if(isMounted)
+            setComments(result.data);
+            setRefresh(false);
         })
       }
       getComments();
+      return ()=> isMounted = false
     }, [!refresh])
   return (
     <div className='post' >

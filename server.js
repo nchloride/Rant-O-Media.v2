@@ -13,6 +13,7 @@ const db = require("./backend/database");
 const fs = require("fs");
 const register = require("./backend/register");
 const find = require("./backend/findUser")
+const follow = require("./backend/follow")
 const multer = require("multer");
 const path = require("path");
 const { Console } = require("console");
@@ -63,6 +64,7 @@ app.use(express.json());
 //==============ROUTES==================//
 app.use("/register", register);
 app.use('/find', find)
+app.use('/follow',follow)
 app.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) console.log(err);

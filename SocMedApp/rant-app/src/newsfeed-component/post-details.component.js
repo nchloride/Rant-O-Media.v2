@@ -65,7 +65,7 @@ export const PostDetails = ({icon,fullname,username,post,date,feeling,local_id})
         <div className="details-options-container">
             <div className="user-details">
                 <img src={require(`../icon/${icon}`)}></img>
-                <Link to={`/home/profile/${username}`} className="link">{fullname}</Link>
+                <Link to={`/home/${username}`} className="link">{fullname}</Link>
                 
             </div>
             <div className="user-options">
