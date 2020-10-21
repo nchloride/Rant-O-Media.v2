@@ -1,10 +1,10 @@
 import React from 'react'
 import {NavLink} from "react-router-dom"
-const SocialsNav = () => {
+const SocialsNav = ({username}) => {
     return (
         <div className="socials-nav">
             <NavLink
-             to="/home/socials/followers"
+             to={`/home/${username}/socials/followers`}
              tabIndex="0"
              activeClassName="nav-active"
              className="nav-links">
@@ -12,7 +12,7 @@ const SocialsNav = () => {
              </NavLink>
 
             <NavLink
-             to="/home/socials/following"
+             to={`/home/${username}/socials/following`}
              tabIndex="0"
              activeClassName="nav-active"
              className="nav-links">

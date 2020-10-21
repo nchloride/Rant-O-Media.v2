@@ -16,9 +16,17 @@
 }
 .socials-nav>.nav-links{
     width: 100%;
-    font-size: 25px;
+    font-size: 15px;
 }
 .socials-nav>.nav-links>h1{
     text-align: center;
     width: 100%;
+}
+.socials-main > .follow{
+    margin:20px 10px;
+    background-color: beige;
+}
+.follow__container{
+    display: flex;
+
 }

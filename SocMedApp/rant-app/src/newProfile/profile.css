@@ -22,10 +22,25 @@
   width: 120px;
   border-radius: 50%;
 }
-
+.follows{
+  display: flex;
+  width: 30%;
+  justify-content: space-around;
+}
+.follows>.followers,.follows>.following{
+  text-decoration: none;
+  color: black;
+  font-weight: bolder;
+  font-size: 15px;
+}
 @media screen and (max-width: 768px) {
   .profile__details {
     width: 100%;
+    font-size: 10px;
+  }
+  .follows>.followers,.follows>.following{
+
+    font-size: 12px;
   }
 }
 @media screen and (max-height: 800px) {

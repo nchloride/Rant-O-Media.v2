@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React,{useEffect, useState} from 'react'
-import { Redirect, useParams ,withRouter} from 'react-router';
+import { Redirect, Route, useParams ,withRouter,Switch} from 'react-router';
 import { ProfileDetails } from './profile-detaiils';
 import "./profile.css"
 import {NewsfeedWall} from "../newsfeed-component/newsfeed-wall.component";
 import NewsFeedPosting from '../newsfeed-component/newsfeed-posting.component';
+import {Socials} from "../following-followers.component"
  const Profile = (props) => {
     const {username} = useParams()
     const [userData,setUserData] = useState([])
@@ -27,12 +28,22 @@ import NewsFeedPosting from '../newsfeed-component/newsfeed-posting.component';
 
     
     return (
-        <div  className="profile">
-            {userData && <ProfileDetails userData={userData}/>}
+        <>
+        <Switch>
+                <Route path="/home/:username/socials" children={<Socials username={username} followers={userData.followers} following={userData.following}/>}>
+                </Route>
+                <Route path="/home/:username" children={
+                    <div  className="profile">
+                        {userData && <ProfileDetails userData={userData}/>}
 
-            {username === loggedInUser ?<NewsFeedPosting setPosts={setUserPosts}/>:null}
-            {userPosts.length!==0 && <NewsfeedWall posts = {userPosts}/>}
-        </div>
+                        {username === loggedInUser ?<NewsFeedPosting setPosts={setUserPosts}/>:null}
+                        {userPosts.length!==0 && <NewsfeedWall posts = {userPosts}/>}
+                    </div>}>
+                </Route>
+                
+               
+        </Switch>
+        </>
     )
 }
 export default withRouter(Profile)

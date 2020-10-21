@@ -15,8 +15,8 @@ export const ProfileDetails = (props) => {
                 <p>{address}</p>
                 <small>{email}</small>
                 <div className="follows">
-                    <Link to="#">{followers && `${followers.length} followers`}</Link>
-                    <Link to="#">{following && `${following.length} following`}</Link>
+                    <Link to={`/home/${username}/socials/followers`} className="followers">{followers && `${followers.length} followers`}</Link>
+                    <Link to={`/home/${username}/socials/following`} className="following">{following && `${following.length} following`}</Link>
                 </div>
             </div>
         </>
