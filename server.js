@@ -79,7 +79,7 @@ app.post("/login", (req, res, next) => {
     }
   })(req, res, next);
 });
-      //Check the user if it's still logged in
+    //Check the user if it's still logged in
 app.get("/islogin", (req, res) => {
   if (req.user != null || req.user != undefined)
     res.send({ data: req.user, authenticated: true });
@@ -102,7 +102,9 @@ app.use('/newsfeed',newsfeed)
 app.get('/searchuser/:username',(req,res)=>{
   const {username} = req.params;
   db.get('userinformation').findOne({username:username},['-password'])
-  .then(result=>res.json(result))
-  .catch(err => res.send({error:err}))
+    .then(result=>res.json(result))
+      .catch(err => res.send({error:err}))
 })
+
+
 app.listen(port, () => console.log(`PORT IS RUNNING ON ${port}`));

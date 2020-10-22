@@ -36,14 +36,11 @@ export const PostDetails = ({icon,fullname,username,post,date,feeling,local_id})
     const [modalDeleteOpen,setModalDeleteOpen] = useState(false);
     const {username:loggedInUser} = JSON.parse(localStorage.getItem("userInformation"));
     const [refreshPost,setRefreshPost] = useContext(RefreshPost);
-    useEffect(() => {
-        console.log(local_id);
-    }, [])
+
     const stateReset = prevData => !prevData
     const handlePostDelete = async()=>{
-        await axios.delete(`/newsfeed/delete-post/${local_id}`)
+        await axios.delete(`/newsfeed/api/posts/${local_id}`)
         .then(result=>{
-            console.log(result.data);
             setModalDeleteOpen(stateReset) 
             setOptionsOpen(stateReset)
             setRefreshPost(stateReset)
@@ -53,7 +50,6 @@ export const PostDetails = ({icon,fullname,username,post,date,feeling,local_id})
         data.local_id=local_id;
         await axios.put('/newsfeed/api/posts',{data}).
             then(res=>{
-                console.log(res.data);
                 setModalEditOpen(stateReset);
                 setOptionsOpen(stateReset);
                 setRefreshPost(stateReset);

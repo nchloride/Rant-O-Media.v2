@@ -15,18 +15,19 @@ import {RefreshPost} from "../post-refresh-context/post-refresh"
     const {username:loggedInUser} = JSON.parse(localStorage.getItem('userInformation'));
     useEffect(() => {
         let isMounted = true;
+        //Search for the user and the posts in the URL params
         const getUser = async()=>{
          await axios.get(`/searchuser/${username}`)
                 .then(async (res)=>{
                     res.data ? setUserData(res.data):props.history.push('/home/profile/not-found');
-                    await axios.post('/newsfeed/api/get-userposts',{username})
-                     .then(res2 => isMounted && setUserPosts(res2.data));
+                        await axios.post('/newsfeed/api/get-userposts',{username})
+                            .then(res2 => isMounted && setUserPosts(res2.data));
                  }
             )
         }
         getUser();
         return () => isMounted=false
-    }, [!refreshPost])
+    }, [!refreshPost , username])
 
     
     return (
@@ -34,16 +35,14 @@ import {RefreshPost} from "../post-refresh-context/post-refresh"
         <Switch>
                 <Route path="/home/:username/socials" children={<Socials username={username} followers={userData.followers} following={userData.following}/>}>
                 </Route>
+
                 <Route path="/home/:username" children={
                     <div  className="profile">
                         {userData && <ProfileDetails userData={userData}/>}
-
                         {username === loggedInUser ?<NewsFeedPosting setPosts={setUserPosts}/>:null}
                         {userPosts.length!==0 && <NewsfeedWall posts = {userPosts}/>}
                     </div>}>
                 </Route>
-                
-               
         </Switch>
         </>
     )

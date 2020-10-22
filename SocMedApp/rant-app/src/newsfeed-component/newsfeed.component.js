@@ -6,22 +6,26 @@ import { NewsfeedWall } from "./newsfeed-wall.component";
 import {RefreshPost} from "../post-refresh-context/post-refresh" 
 export default function NewsFeed() {
   const [posts,setPosts]=useState([])
+  //Refresh Newsfeed wall whenever the user post
   const [refreshPost,setRefreshPost] = useContext(RefreshPost);
+
   useEffect(() => {
-    window.scrollTo(0,0)
     let isMounted=true
+
     const getUserPosts= async()=>{
-      await axios('/newsfeed/api/userposts').then(res=>{
+      await axios.get('/newsfeed/api/posts').then(res=>{
         isMounted && setPosts(res.data);
       })
     }
+
     getUserPosts()
+
     return () =>isMounted=false
   }, [!refreshPost])
+
    return (
     <div className="newsfeed--page">
       <NewsFeedPosting setPosts={setPosts}/>
-      
       <NewsfeedWall posts={posts}/>
     </div>
    )

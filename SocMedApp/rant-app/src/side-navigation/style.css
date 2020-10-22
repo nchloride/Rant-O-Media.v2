@@ -40,6 +40,15 @@
   color: black;
   align-self: center;
 }
+
+@media screen and (max-width: 1110px){
+  .home-nav-list {
+    list-style: none;
+    width: 150px;
+    font-size: 11px;
+    height: 30px;
+  }
+}
 @media screen and (max-width: 1024px) {
   .home--nav {
     justify-content: space-around;
@@ -49,6 +58,19 @@
   }
   .home-nav-links {
     justify-content: right;
+  }
+}
+@media screen and (max-width: 945px){
+  .home-nav {
+    justify-content: unset;
+  }
+  .nav-links-title {
+    display: none;
+  }
+  .home-nav-list {
+    list-style: none;
+    width: 50px;
+    height: 25px;
   }
 }
 @media screen and (max-width: 768px) {

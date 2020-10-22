@@ -5,12 +5,11 @@ import { PostDetails } from './post-details.component';
 
 const Post =(props)=>{
     const {username,post,feeling,fullname,date,likes,local_id,icon} = props.post;
-    const  [comments,setComments] = useState([]);
+    const [comments,setComments] = useState([]);
     const [refresh,setRefresh] = useState(false);
     useEffect(() => {
       let isMounted = true
       const getComments = async()=>{
-        // await axios.post('/newsfeed/api/get-comments',{local_id})
         await axios.get(`/newsfeed/api/comments/${local_id}`)
         .then(result => {
           if(isMounted)

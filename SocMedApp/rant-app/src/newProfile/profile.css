@@ -33,6 +33,16 @@
   font-weight: bolder;
   font-size: 15px;
 }
+@media screen and (max-width: 1170px) {
+  .profile__details {
+    width: 100%;
+    font-size: 10px;
+  }
+  .follows>.followers,.follows>.following{
+
+    font-size: 12px;
+  }
+}
 @media screen and (max-width: 768px) {
   .profile__details {
     width: 100%;
@@ -62,5 +72,32 @@
   }
   .profile__details {
     height: 40vh;
+  }
+}
+/* HEIGHT */
+@media screen and (max-height: 568px) {
+  .follows{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+  }
+  .follows>.followers,.follows>.following{
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+    font-size: 158px;
+  }
+  .profile__details > img {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+  }
+  .profile__details {
+    width: 100%;
+    font-size: 10px;
+  }
+  .follows>.followers,.follows>.following{
+
+    font-size: 12px;
   }
 }

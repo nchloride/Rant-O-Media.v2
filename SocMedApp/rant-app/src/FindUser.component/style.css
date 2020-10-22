@@ -26,6 +26,7 @@
     height: 800px;
     width: 100%;
     background-color: rgb(59, 59, 59);
+    overflow-y: scroll;
 }
 
 .searched_user{
@@ -62,7 +63,11 @@
     margin:10px;
     font-family: "Squada One", cursive;
 }
-
+@media screen and (max-width:575px){
+    .find-user{
+        width: 80%;
+    }
+}
 @media screen and (max-width:425px){
     .find-user{
         width: 100%;

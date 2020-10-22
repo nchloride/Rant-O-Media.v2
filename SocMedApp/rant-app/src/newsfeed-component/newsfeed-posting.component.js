@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React,{useEffect} from 'react'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import { v1 as uuidv1 } from 'uuid';
 export const NewsFeedPosting = ({setPosts}) => {
@@ -14,7 +14,8 @@ export const NewsFeedPosting = ({setPosts}) => {
         data.likes=[];
         data.icon = icon;
         data.date=Date();
-        await axios.post('/newsfeed/post',data).then(res=>console.log(res))
+
+        await axios.post('/newsfeed/api/posts',data).then(res=>console.log(res))
         setPosts(prevPosts=>[...prevPosts,data])
         reset()
     }

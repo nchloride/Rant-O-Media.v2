@@ -1,13 +1,15 @@
 const db = require('./database');
 const router = require('express').Router();
 const ObjectId =require('mongodb').ObjectId
-router.post('/post',(req,res)=>{
+  //POST
+
+router.post('/api/posts',(req,res)=>{
     const {post,username,feeling,date,fullname}= req.body;
     db.get('userposts').insert(req.body)
     res.send({message:'Posted!'})
   })
-  //POST
-router.delete('/delete-post/:postID',(req,res)=>{
+
+router.delete('/api/posts/:postID',(req,res)=>{
     //Destructure request parameters
     const {postID} =req.params;
     //Call userposts collections then delete post
@@ -16,7 +18,7 @@ router.delete('/delete-post/:postID',(req,res)=>{
     db.get('userposts').findOneAndDelete({local_id:postID})
     .then(result=>{
       db.get('usercomments').remove({postID})
-      .then(result2=>res.send({message:"POST DELETED!"}))
+        .then(result2=>res.send({message:"POST DELETED!"}))
     })
   
 
@@ -26,7 +28,7 @@ router.put('/api/posts',(req,res)=>{
   db.get('userposts').findOneAndUpdate({local_id},{$set:{post}}).
   then(result=>res.send({ message:"post updated" }));
 })
-router.get('/api/userposts',(req,res)=>{
+router.get('/api/posts',(req,res)=>{
     db.get('userposts').find({}).then(result=>{
       res.json(result)
     });
@@ -35,10 +37,11 @@ router.post('/api/get-userposts',(req,res)=>{
     const {username} = req.body;
     db.get('userposts').find({username}).then(result => res.json(result));
 })
-//@Desc Like post
+//@Desc route for liking post, adding the liker's info in the post's likes
 router.put('/likepost',(req,res)=>{
     const {local_id,username,fullname} = req.body;
     let likeStatus;
+    //@Desc if the user likes the post, delete like, else like
     const checkLikes = (likes)=>{
       if( likes !==null || likes.length!==0){
         const hasLiked = likes.filter(user=> user.username===username)
@@ -63,7 +66,7 @@ router.put('/likepost',(req,res)=>{
   
   })
   
-    //  Comment
+    //@Desc Comment
     router.post("/api/comments",(req,res)=>{
       const {comment,username,fullname,icon,local_id} = req.body;
       db.get('usercomments').insert(req.body)
