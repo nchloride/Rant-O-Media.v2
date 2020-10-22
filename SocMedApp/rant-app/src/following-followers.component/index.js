@@ -6,12 +6,14 @@ import {BrowserRouter  ,Route,Switch} from "react-router-dom"
 import "./styles.css"
 
 export const Socials = ({followers,following,username}) => {
+        // Followers && Following contains username,icon,fullname
+        const loggedInUser = JSON.parse(localStorage.getItem('userInformation'))
       return (
         <div className="socials-main">
                 <SocialsNav username={username}/>
                 <Switch>
-                    <Route path={`/home/${username}/socials/followers`} children={<Followers followers={followers}/>} exact/>
-                    <Route path={`/home/${username}/socials/following`} children={<Following following={following}/>} exact/>
+                    <Route path={`/home/${username}/socials/followers`} children={<Followers followers={followers} loggedInUser={loggedInUser}/>} exact/>
+                    <Route path={`/home/${username}/socials/following`} children={<Following following={following} loggedInUser={loggedInUser}/>} exact/>
                 </Switch>
         </div>
     )

@@ -1,17 +1,22 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import SearchedContainer from "../FindUser.component/SearchedContainer"
 
-const Followers = ({followers}) => {
+
+const Followers = ({followers,loggedInUser}) => {
+    const [users,setUsers] = useState([]);
+    useEffect(()=>{
+        const getFollowerData = async follower=>{
+            await axios.get(`/searchUser/${follower.username}`)
+                .then(result => setUsers(prevUser => [...prevUser,result.data]))
+        }
+        if(followers!==undefined){
+            followers.forEach(follower=>getFollowerData(follower));
+        }
+    },[]);
     return (
         <div className="follow">
-            {followers && followers?.map((follower,id)=>
-                <div key={id} className="follow__container">
-                     <img src={require(`../icon/${follower.icon}`)}></img>
-                    <section>
-                        <h1>{follower.fullname}</h1>
-                        <h2>{follower.username}</h2>
-                    </section>
-                </div>)
-            }
+            {users && users.map((user,id)=><SearchedContainer key={id} loggedInUser={loggedInUser} user={user}/>)}
         </div>
     )
 }

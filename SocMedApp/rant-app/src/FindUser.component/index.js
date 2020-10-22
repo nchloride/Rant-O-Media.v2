@@ -13,15 +13,13 @@ const FindUser = () => {
             .then(result=>setUsers(result.data));
     }
     useEffect(() => {
-        const getFollowers = async()=>{
+        const getLoggedInUser = async()=>{
             await axios.get(`/searchUser/${username}`)
                 .then(result=>{
-                    if(result.data.followers){
-                        setFollowers(result.data.followers)
-                    }
+                        setFollowers(result.data)
                 })
         }
-        getFollowers();
+        getLoggedInUser();
     }, [])
     return (
         <div className="find-user">
@@ -29,7 +27,7 @@ const FindUser = () => {
             {users ? 
                 <div className="find-user__search_container">
                     <h1>{users.length} {users.length>1?"users":"user"} found</h1>
-                    {users?.map(user=>(<SearchedContainer key={user._id} user={user} followers={followers} loggedInUser={{username,fullname,icon}}/>))}
+                    {users?.map(user=>(<SearchedContainer key={user._id} user={user} loggedInUser={followers}/>))}
                 </div>: 
                  <h1>Search for users</h1>
             }

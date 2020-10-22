@@ -2,7 +2,7 @@ import { orange } from '@material-ui/core/colors';
 import axios from 'axios';
 import React,{useState,useEffect} from 'react'
 import { Link } from 'react-router-dom';
-const SearchedContainer = ({user,followers,loggedInUser}) => {
+const SearchedContainer = ({user,loggedInUser}) => {
     
     useEffect(() => {
         console.log(user);
@@ -32,8 +32,8 @@ const SearchedContainer = ({user,followers,loggedInUser}) => {
         }) 
     }
 
-    const [isFollower,setIsFollower] = useState(followValidator(user.username,followers))
-    const [isFollowed,setIsFollowed] = useState(followValidator(loggedInUser.username,user.followers))
+    const [isFollower,setIsFollower] = useState(followValidator(user.username,loggedInUser.followers || []))
+    const [isFollowed,setIsFollowed] = useState(followValidator(loggedInUser.username,user.followers || []))
     return (
         <div className="searched_user">
             <Link to={`/home/${user.username}`} className="user__link"> 
@@ -44,7 +44,11 @@ const SearchedContainer = ({user,followers,loggedInUser}) => {
                     {isFollower && isFollowed? "You follow each other": isFollower?"Follows you" : ""}
                 </section>
             </Link>
-            {loggedInUser.username!==user.username && <button onClick={handleFollow} style={{backgroundColor:isFollowed && "orange"}}>{isFollowed?"Following":'Follow'}</button>}
+            {loggedInUser.username!==user.username &&
+                <button onClick={handleFollow}
+                     style={{backgroundColor:isFollowed && "orange"}}>
+                     {isFollowed?"Following":'Follow'}
+                </button>}
         </div>
     )
 }
