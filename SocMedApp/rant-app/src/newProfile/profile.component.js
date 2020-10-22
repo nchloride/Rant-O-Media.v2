@@ -1,12 +1,14 @@
 import axios from 'axios';
-import React,{useEffect, useState} from 'react'
+import React,{useEffect, useState,useContext} from 'react'
 import { Redirect, Route, useParams ,withRouter,Switch} from 'react-router';
 import { ProfileDetails } from './profile-detaiils';
 import "./profile.css"
 import {NewsfeedWall} from "../newsfeed-component/newsfeed-wall.component";
 import NewsFeedPosting from '../newsfeed-component/newsfeed-posting.component';
 import {Socials} from "../following-followers.component"
+import {RefreshPost} from "../post-refresh-context/post-refresh"
  const Profile = (props) => {
+    const [refreshPost,setRefreshPost] = useContext(RefreshPost)
     const {username} = useParams()
     const [userData,setUserData] = useState([])
     const [userPosts,setUserPosts] = useState([])
@@ -14,17 +16,17 @@ import {Socials} from "../following-followers.component"
     useEffect(() => {
         let isMounted = true;
         const getUser = async()=>{
-        isMounted && await axios.get(`/searchuser/${username}`)
+         await axios.get(`/searchuser/${username}`)
                 .then(async (res)=>{
                     res.data ? setUserData(res.data):props.history.push('/home/profile/not-found');
                     await axios.post('/newsfeed/api/get-userposts',{username})
-                     .then(res2 => setUserPosts(res2.data));
+                     .then(res2 => isMounted && setUserPosts(res2.data));
                  }
             )
         }
         getUser();
         return () => isMounted=false
-    }, [username])
+    }, [!refreshPost])
 
     
     return (
