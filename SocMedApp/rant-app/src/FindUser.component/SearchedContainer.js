@@ -1,4 +1,3 @@
-import { orange } from '@material-ui/core/colors';
 import axios from 'axios';
 import React,{useState,useEffect} from 'react'
 import { Link } from 'react-router-dom';
@@ -7,7 +6,7 @@ const SearchedContainer = ({user,loggedInUser}) => {
     useEffect(() => {
         console.log(user);
     }, [])
-    const followValidator = (username,followers)=>{
+    const followValidator = (username,followers = [])=>{
             if(followers!==undefined && followers.length!==0){
                 const followed = followers.find(follower => follower.username ===username);
                 if(followed){
@@ -32,8 +31,8 @@ const SearchedContainer = ({user,loggedInUser}) => {
         }) 
     }
 
-    const [isFollower,setIsFollower] = useState(followValidator(user.username,loggedInUser.followers || []))
-    const [isFollowed,setIsFollowed] = useState(followValidator(loggedInUser.username,user.followers || []))
+    const [isFollower,setIsFollower] = useState(followValidator(user.username,loggedInUser.followers))
+    const [isFollowed,setIsFollowed] = useState(followValidator(loggedInUser.username,user.followers))
     return (
         <div className="searched_user">
             <Link to={`/home/${user.username}`} className="user__link"> 
