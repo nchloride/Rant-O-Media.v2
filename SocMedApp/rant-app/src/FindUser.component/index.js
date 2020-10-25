@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import SearchedContainer from './SearchedContainer';
 import SearchForm from './SearchForm'
-import "./style.css"
+import "./styles.css"
 const FindUser = () => {
     const [users,setUsers] = useState();
     const {username,icon,fullname} = JSON.parse(localStorage.getItem('userInformation'))

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import LogoComponent from "../design/logo.component";
 import "./login.css";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 import { IsAuthenticated } from "../AuthContext/UserAuthorization";
 import Register from "../register-component/register.component";
 
@@ -81,4 +81,4 @@ function LoginComponent(props) {
   );
 }
 
-export default LoginComponent;
+export default withRouter(LoginComponent);

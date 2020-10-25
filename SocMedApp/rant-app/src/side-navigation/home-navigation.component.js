@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from "react";
 import { NavLink, withRouter } from "react-router-dom";
-import "./style.css";
+import "./styles.css";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import HomeIcon from "@material-ui/icons/Home";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";

@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from "react";
 import { withRouter, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import { IsAuthenticated } from "../AuthContext/UserAuthorization";
-import "./style.css";
+import "./styles.css";
 import LoadingAnimation from "../design/loading.animation.component";
 import HomeNavigation from "../side-navigation/home-navigation.component";
 import {PostRefresh} from "../post-refresh-context/post-refresh"

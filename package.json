@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"cd SocMedApp/rant-app && npm run build",
+    "install-client": "cd SocMedApp/rant-app && npm install",
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false && npm run install-client && npm run build",
     "server": "nodemon server.js",
     "client": "npm start --prefix SocMedApp/rant-app",
     "dev": "concurrently \"npm run server\" \"npm run client\""
