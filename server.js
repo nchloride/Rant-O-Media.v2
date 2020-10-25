@@ -19,7 +19,7 @@ const path = require("path");
 const { Console } = require("console");
 
 
-
+app.use(express.static('SocMedApp/rant-app/build'));
 //==================File Upload Setup=================//
 const dir = "./SocMedApp/rant-app/src/pictures-uploads";
 const storage = multer.diskStorage({
@@ -110,8 +110,8 @@ if(process.env.NODE_ENV === 'production'){
  }
 
 
-app.get("*", function(req,res){
- // res.sendFile('index.html', {root: path.join(__dirname, 'SocMedApp/rant-app/build')})
-  res.sendFile(path.join(__dirname, 'SocMedApp/rant-app/build/index.html'));
-})
+// app.get("*", function(req,res){
+//  // res.sendFile('index.html', {root: path.join(__dirname, 'SocMedApp/rant-app/build')})
+//   res.sendFile(path.join(__dirname, 'SocMedApp/rant-app/build/index.html'));
+// })
 app.listen(port, () => console.log(`PORT IS RUNNING ON ${port}`));
