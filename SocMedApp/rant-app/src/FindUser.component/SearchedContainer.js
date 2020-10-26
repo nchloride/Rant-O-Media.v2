@@ -2,10 +2,7 @@ import axios from 'axios';
 import React,{useState,useEffect} from 'react'
 import { Link } from 'react-router-dom';
 const SearchedContainer = ({user,loggedInUser}) => {
-    
-    useEffect(() => {
-        console.log(user);
-    }, [])
+
     const followValidator = (username,followers = [])=>{
             if(followers!==undefined && followers.length!==0){
                 const followed = followers.find(follower => follower.username ===username);

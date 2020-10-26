@@ -13,7 +13,7 @@ function LoginComponent(props) {
   const { handleSubmit, register } = useForm();
   const [openModal, setModalOpen] = useState(false);
   const [responseMessage, setResponseMessage] = useState("");
-
+  const [loginIncorrect,setLoginIncorrect] = useState(false);
   const onUserLogin = async (data) => {
     await fetch("/login", {
       mode: "cors",
@@ -27,7 +27,7 @@ function LoginComponent(props) {
           setLoggedIn(true);
           localStorage.setItem("userInformation", JSON.stringify({username:resp.data.username,fullname:resp.data.fullname,icon:resp.data.icon,following:resp.data.following,followers:resp.data.followers}));
         } else {
-          return;
+          setLoginIncorrect(true);
         }
       })
       .catch((err) => console.log(err));
@@ -52,7 +52,7 @@ function LoginComponent(props) {
       <div className="login--tab">
         <LogoComponent />
         <form onSubmit={handleSubmit(onUserLogin)} className="login--tab-form">
-          <h1>POST ALL THE SHIT YOU WANT</h1>
+          <h1>SHARE ALL YOUR THOUGHTS WITH US</h1>
           <input
             type="text"
             name="username"
@@ -66,6 +66,7 @@ function LoginComponent(props) {
             placeholder="Password"
           ></input>
           <input type="submit" value="LOGIN"></input>
+          {loginIncorrect && "Incorrect username or password"}
           <button onClick={() => setModalOpen(!openModal)}>
             Create an account
           </button>

@@ -20,12 +20,10 @@ function HomeComponent(props) {
   };
   
   useEffect(() => {
-    console.log("Logged in to the app");
     let isMounted = true;
     const isLogin = async () => {
       setLoading(true);
       await axios.get("/islogin").then((data) => {
-        console.log(data.data.authenticated);
         if (!data.data.authenticated) {
           handleRedirect();
         }

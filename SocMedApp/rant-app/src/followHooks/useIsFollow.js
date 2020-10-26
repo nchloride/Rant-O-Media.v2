@@ -16,8 +16,7 @@ const useIsFollow = (username,followList ) => {
     }
     const [isFollowed,setIsFollowed] = useState();
     useEffect(()=>{
-        console.log(username,followList);
-     followValidator(username,followList || []) ? setIsFollowed(true) : setIsFollowed(false)
+        followValidator(username,followList || []) ? setIsFollowed(true) : setIsFollowed(false)
     },[followList])
 
     return [isFollowed,setIsFollowed]

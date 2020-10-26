@@ -15,7 +15,7 @@ export const NewsFeedPosting = ({setPosts}) => {
         data.icon = icon;
         data.date=Date();
 
-        await axios.post('/newsfeed/api/posts',data).then(res=>console.log(res))
+        await axios.post('/newsfeed/api/posts',data);
         setPosts(prevPosts=>[...prevPosts,data])
         reset()
     }

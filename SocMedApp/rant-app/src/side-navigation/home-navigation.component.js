@@ -17,9 +17,6 @@ function HomeNavigation(props) {
       localStorage.removeItem("userInformation");
     });
   };
-  useEffect(() => {
-  console.log('SIDENAV RENDERED');
-  }, [])
   return (
     <nav className="home--nav">
       <div className="home-nav-links">

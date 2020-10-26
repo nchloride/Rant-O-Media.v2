@@ -22,7 +22,7 @@ export const CommentsLikes = ({likes,local_id,comments,setRefresh}) => {
     const handleLike = async()=>{
         setLike(prevData=>!prevData);
         setLikesCount(prevCount=>liked?prevCount-1:prevCount+1);
-        await axios.put("/newsfeed/likepost",liker).then(res=>{console.log(res.data)});
+        await axios.put("/newsfeed/likepost",liker);
     }
     useEffect(() => {
         let currentLikeStatus;
