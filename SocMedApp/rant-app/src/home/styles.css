@@ -28,6 +28,27 @@ html {
   width: 300px;
   height: 30px;
 }
+.nav-links {
+  outline: none;
+  color: black;
+  text-decoration: none;
+  font-family: "Squada One", cursive;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  text-align: center;
+  float: left;
+  display: flex;
+}
+.nav-active {
+  transition: 0.1s linear;
+  background-color: orange;
+  width: 50%;
+  height: 100%;
+  color: black;
+  align-self: center;
+}
+
 @media screen and (max-width: 1170px) {
   ::-webkit-scrollbar {
     display: none;
