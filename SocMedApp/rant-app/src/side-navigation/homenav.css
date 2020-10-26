@@ -1,24 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Squada+One&display=swap");
-.home--nav {
-  background-color: gray;
-  height: 100px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  position: absolute;
-  z-index: 100;
-}
-.home-nav-links {
-  display: flex;
-  justify-content: center;
-}
-.home-nav-list {
-  list-style: none;
-  width: 300px;
-  height: 30px;
-}
+
 
 .nav-links {
   outline: none;
