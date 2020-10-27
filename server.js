@@ -110,8 +110,8 @@ if(process.env.NODE_ENV === 'production'){
  }
 
 
-app.get("/*", function(req,res){
-  res.sendFile('index.html', {root: path.join(__dirname, 'SocMedApp/rant-app/build')})
+app.get("*", function(req,res){
+  res.sendFile(path.join(__dirname, 'SocMedApp/rant-app/build',"index.html"))
   //res.sendFile(path.join(__dirname, 'SocMedApp/rant-app/build'));
 })
 app.listen(port, () => console.log(`PORT IS RUNNING ON ${port}`));
