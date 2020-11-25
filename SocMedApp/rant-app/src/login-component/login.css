@@ -56,10 +56,19 @@ input[type="password"]::placeholder {
 .login--tab-form > input[type="submit"]:active {
   box-shadow: 0 0 1pt 1pt orange;
 }
-.login--tab-form > button,
-              /* REGISTER */
 
-.register--modal-form > .create-account {
+              /* REGISTER */
+.register--modal{
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  width: 70%;
+  padding: 20px;
+  height: 500px;
+  background-color: white;
+}
+.login--tab-form > button,.register--modal-form > .create-account {
   margin: 10px;
   outline: none;
   border: none;
@@ -90,9 +99,10 @@ input[type="password"]::placeholder {
 }
 .register--modal-form > input {
   height: 40px;
+  text-align: center;
 }
 .register--modal-form > input::placeholder{
-  text-align: center;
+  
 }
 .register--modal-form > input:focus {
   box-shadow: 0 0 1pt 2pt var(--secondary-color);
@@ -176,6 +186,13 @@ input[type="password"]::placeholder {
     width: 86%;
   }
   /* REGISTER */
+  .register--modal{
+    width: 100%;
+    height: 100%;
+  }
+  .register--modal>input{
+    margin: 20px;
+  }
   .register--modal-form > .radio-buttons{
     display: grid;
     grid-template-columns: auto auto auto auto auto  ;

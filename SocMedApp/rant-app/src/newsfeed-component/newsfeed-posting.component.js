@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { v1 as uuidv1 } from 'uuid';
 export const NewsFeedPosting = ({setPosts}) => {
     const {handleSubmit,register,reset} = useForm();
-    const feelings = ['Sad','Happy','Excited','Demonyo','Dumb']
+    const feelings = ['Sad','Happy','Excited','Lucky','Dumb']
     const {fullname,username,icon} = JSON.parse(localStorage.getItem('userInformation'))
 
     const handlePost =  async (data)=>{

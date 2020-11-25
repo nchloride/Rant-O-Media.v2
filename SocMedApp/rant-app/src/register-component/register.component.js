@@ -47,7 +47,7 @@ export default function Register({
       .catch((err) => console.log(err));
   };
   return (
-    <Modal style={customStyles} isOpen={openModal}>
+    <Modal  isOpen={openModal} className="register--modal">
       <form
         onSubmit={handleSubmit(onRegister)}
         className="register--modal-form"
