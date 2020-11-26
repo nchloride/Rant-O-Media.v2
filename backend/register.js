@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
           password,
           icon
         });
-        res.json({ message: "YOU'VE CREATED AN ACCOUNT CUNT!" });
+        res.json({ message: "YOU'VE CREATED AN ACCOUNT!" });
       } else {
         res.json({ message: "USERNAME IS ALREADY TAKEN IM SORRY GAMER" });
       }
