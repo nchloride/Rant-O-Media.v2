@@ -68,13 +68,13 @@ export default function Register({
           type="text"
           name="username"
           placeholder="Username"
-          ref={register({ required: true, minLength: 8 })}
+          ref={register({ required: true, minLength: 8,pattern:{value:/^\S*$/} })}
         ></input>
         <input
           type="password"
           name="password"
           placeholder="Password"
-          ref={register({ required: true, minLength: 8 })}
+          ref={register({ required: true, minLength: 8,pattern:{value:/^\S*$/} })}
         ></input>
         <input
           type="text"
