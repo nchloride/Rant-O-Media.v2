@@ -56,13 +56,13 @@ function LoginComponent(props) {
           <input
             type="text"
             name="username"
-            ref={register({ required: true, maxLength: 20,pattern:{value:/^\S*$/} })}
+            ref={register({ required: true, minLength:8,pattern:{value:/^\S*$/} })}
             placeholder="Username"
           ></input>
           <input
             type="password"
             name="password"
-            ref={register({ required: true, maxLength: 20,pattern:{value:/^\S*$/} })}
+            ref={register({ required: true, minLength:8,pattern:{value:/^\S*$/} })}
             placeholder="Password"
           ></input>
           <input type="submit" value="LOGIN"></input>
