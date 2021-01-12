@@ -25,3 +25,12 @@ A full stack website social media clone that has the basic functionalities of to
 -NODEJS
 <br/>
 -MONGODB
+
+### What I learned
+
+Basic CRUD application <br/>
+String validation<br/>
+User authentication <br/>
+Responsive design <br/>
+JSON/Array manipulation <br/>
+Sorting
