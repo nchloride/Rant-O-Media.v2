@@ -100,7 +100,7 @@ const newsfeed = require('./backend/newsfeed');
 app.use('/newsfeed',newsfeed)
 app.get('/searchuser/:username',(req,res)=>{
   const {username} = req.params;
-  db.get('userinformation').findOne({username:username},['-password'])
+  db.get('userinformation').findOne({username:username})
     .then(result=>res.json(result))
       .catch(err => res.send({error:err}))
 })

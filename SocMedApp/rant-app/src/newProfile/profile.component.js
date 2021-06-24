@@ -27,7 +27,7 @@ import {RefreshPost} from "../post-refresh-context/post-refresh"
             )
         }
         getUser();
-        return () => isMounted=false
+        return () => {isMounted=false; console.log(userData);}
     }, [!refreshPost , username])
 
     

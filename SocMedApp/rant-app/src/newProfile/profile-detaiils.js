@@ -22,6 +22,7 @@ export const ProfileDetails = (props) => {
     }
     useEffect(() => {
         setFollowersCount(followers?.length || 0)
+        console.log(props.userData);
     }, [followers])
    
     return  (
